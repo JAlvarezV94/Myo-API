@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+     - PORTGRES_PASSWORD=pass123
+    ports:
+     - 5432:5432
