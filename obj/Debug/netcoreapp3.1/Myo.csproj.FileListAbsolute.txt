@@ -40,3 +40,12 @@
 /home/jnoma/workspace/dotnet/Myo/obj/Debug/netcoreapp3.1/Myo.dll
 /home/jnoma/workspace/dotnet/Myo/obj/Debug/netcoreapp3.1/Myo.pdb
 /home/jnoma/workspace/dotnet/Myo/obj/Debug/netcoreapp3.1/Myo.genruntimeconfig.cache
+/home/jnoma/workspace/dotnet/Myo/bin/Debug/netcoreapp3.1/JWT.dll
+/home/jnoma/workspace/dotnet/Myo/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/jnoma/workspace/dotnet/Myo/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/jnoma/workspace/dotnet/Myo/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+/home/jnoma/workspace/dotnet/Myo/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
+/home/jnoma/workspace/dotnet/Myo/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/jnoma/workspace/dotnet/Myo/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
+/home/jnoma/workspace/dotnet/Myo/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/home/jnoma/workspace/dotnet/Myo/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
