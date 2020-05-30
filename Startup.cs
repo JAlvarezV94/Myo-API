@@ -37,6 +37,7 @@ namespace Myo
 
             var key = Encoding.ASCII.GetBytes(Configuration["Crypto:Secret"]);
 
+
             services.AddAuthentication(x => {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;

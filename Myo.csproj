@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>5004133a-6e85-45d5-8d5d-bdfa46f4a7ef</UserSecretsId>
+    <!-- <GenerateAssemblyInfo>false</GenerateAssemblyInfo> -->
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JWT" Version="7.2.1" />
