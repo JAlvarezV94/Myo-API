@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Myo.DAL;
@@ -24,6 +25,7 @@ namespace Myo.Controllers
 
 
         [HttpPost]
+        [Authorize]
         [Route("[action]")]
         public IActionResult CreateNewMyo([FromBody] Myo.Models.Myo myo)
         {
@@ -61,6 +63,27 @@ namespace Myo.Controllers
             myoRepository.Save();
 
             return Json(new SimpleResponser { Success = true, Message = "Your Myo has been created correctly!"});
+        }
+
+
+        [HttpGet]
+        [Authorize]
+        [Route("[action]")]
+        public IActionResult ListMyoByUser([FromHeader]int idUser)
+        {
+
+            // Check user exist
+            if (idUser > 1)
+                return Json(new SimpleResponser { Success = false, Message = "User is necessary."});
+
+            var user = userRepository.GetUserById(idUser);
+            if(user == null)
+                return Json(new SimpleResponser { Success = false, Message = "User does not exists."});
+
+            // Get the list of myos
+            var myoList = myoRepository.ListMyosByUser(idUser);
+
+            return Json(new ComplexResponser<List<Myo.Models.Myo>> { Success = true, Message = "Myos obtained correctly.", Result = myoList});
         }
 
     }

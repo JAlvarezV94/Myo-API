@@ -22,7 +22,10 @@ namespace Myo.DAL
         public User GetUserById(int userId)
         {
             var user = context.Users.Where(u => u.IdUser == userId).FirstOrDefault();
-            context.Entry(user).State = EntityState.Detached;
+
+            if(user != null)
+                context.Entry(user).State = EntityState.Detached;
+            
             return user;
         }
 

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Myo.Models;
 
 namespace Myo.DAL
@@ -17,6 +19,11 @@ namespace Myo.DAL
             context.Myos.Add(myo);
         }
 
+        public List<Models.Myo> ListMyosByUser(int idUser)
+        {
+            return context.Myos.Where(m => m.OwnerIdUser == idUser).ToList();
+        }
+        
         public void Save()
         {
             context.SaveChanges();
