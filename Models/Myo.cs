@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,6 +20,8 @@ namespace Myo.Models
         public string Title { get; set; }
 
         public string Goal { get; set; }
+
+        public DateTime EndDate { get; set; }
 
         public List<Checkpoint> CheckpointList { get; set; }
 
