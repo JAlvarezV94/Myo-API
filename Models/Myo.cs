@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Myo.Models
 {
@@ -10,6 +11,9 @@ namespace Myo.Models
         [Key]
         public int IdMyo { get; set; }
 
+        public int OwnerIdUser { get; set; }
+
+        [ForeignKey("OwnerIdUser")]
         public User Owner { get; set; }
 
         public string Title { get; set; }

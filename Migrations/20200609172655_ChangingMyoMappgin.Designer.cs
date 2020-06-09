@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Myo.Models;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -9,9 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Myo.Migrations
 {
     [DbContext(typeof(MyoContext))]
-    partial class MyoContextModelSnapshot : ModelSnapshot
+    [Migration("20200609172655_ChangingMyoMappgin")]
+    partial class ChangingMyoMappgin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,15 +54,18 @@ namespace Myo.Migrations
                     b.Property<string>("Goal")
                         .HasColumnType("text");
 
-                    b.Property<int?>("OwnerIdUser")
+                    b.Property<int>("Owner")
                         .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
+                    b.Property<int?>("UserIdUser")
+                        .HasColumnType("integer");
+
                     b.HasKey("IdMyo");
 
-                    b.HasIndex("OwnerIdUser");
+                    b.HasIndex("UserIdUser");
 
                     b.ToTable("Myos");
                 });
@@ -95,9 +100,9 @@ namespace Myo.Migrations
 
             modelBuilder.Entity("Myo.Models.Myo", b =>
                 {
-                    b.HasOne("Myo.Models.User", "Owner")
+                    b.HasOne("Myo.Models.User", null)
                         .WithMany("MyoList")
-                        .HasForeignKey("OwnerIdUser");
+                        .HasForeignKey("UserIdUser");
                 });
 #pragma warning restore 612, 618
         }

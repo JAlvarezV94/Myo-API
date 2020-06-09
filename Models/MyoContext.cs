@@ -11,5 +11,16 @@ namespace Myo.Models{
         public DbSet<User> Users { get; set; }
         public DbSet<Myo> Myos { get; set; }
         public DbSet<Checkpoint> Checkpoints { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+            .HasMany(u => u.MyoList)
+            .WithOne(m => m.Owner);
+
+            modelBuilder.Entity<Myo>()
+            .HasOne(m => m.Owner)
+            .WithMany(u => u.MyoList);
+        }
     }
 }

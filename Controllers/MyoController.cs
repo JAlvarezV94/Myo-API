@@ -27,11 +27,11 @@ namespace Myo.Controllers
         public IActionResult CreateNewMyo([FromBody] Myo.Models.Myo myo)
         {
             // Checking mandatory fields
-            if (string.IsNullOrEmpty(myo.Title) || string.IsNullOrEmpty(myo.Goal) || myo.Owner == null)
+            if (string.IsNullOrEmpty(myo.Title) || string.IsNullOrEmpty(myo.Goal) || myo.OwnerIdUser == 0)
                 return Json(new SimpleResponser{ Success = false, Message = "Title, Goal and Owner are mandatory fields."});
 
             // Checking owner exists
-            var user = userRepository.GetUserById(myo.Owner.IdUser);
+            var user = userRepository.GetUserById(myo.OwnerIdUser);
             if (user == null)
                 return Json(new SimpleResponser { Success = false, Message = "The user cannot be found in the database."});
 
