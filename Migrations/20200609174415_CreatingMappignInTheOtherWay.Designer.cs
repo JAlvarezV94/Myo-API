@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Myo.Models;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -9,9 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Myo.Migrations
 {
     [DbContext(typeof(MyoContext))]
-    partial class MyoContextModelSnapshot : ModelSnapshot
+    [Migration("20200609174415_CreatingMappignInTheOtherWay")]
+    partial class CreatingMappignInTheOtherWay
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,13 +51,10 @@ namespace Myo.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("timestamp without time zone");
-
                     b.Property<string>("Goal")
                         .HasColumnType("text");
 
-                    b.Property<int>("OwnerIdUser")
+                    b.Property<int?>("OwnerIdUser")
                         .HasColumnType("integer");
 
                     b.Property<string>("Title")
@@ -100,9 +99,7 @@ namespace Myo.Migrations
                 {
                     b.HasOne("Myo.Models.User", "Owner")
                         .WithMany("MyoList")
-                        .HasForeignKey("OwnerIdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OwnerIdUser");
                 });
 #pragma warning restore 612, 618
         }

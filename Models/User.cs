@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Myo.Models
@@ -14,5 +15,7 @@ namespace Myo.Models
         public string Email { get; set; }
 
         public string Password { get; set; }
+
+        public List<Myo> MyoList { get; set; }
     }
 }
