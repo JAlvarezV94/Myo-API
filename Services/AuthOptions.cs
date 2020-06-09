@@ -1,4 +1,4 @@
-namespace Myo.ConfigurationModels
+namespace Myo.Services
 {
 
     public class AuthOptions

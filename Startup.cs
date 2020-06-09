@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Myo.ConfigurationModels;
+using Myo.Services;
 using Myo.DAL;
 using Myo.Models;
 
@@ -37,7 +37,6 @@ namespace Myo
 
             var key = Encoding.ASCII.GetBytes(Configuration["Crypto:Secret"]);
 
-
             services.AddAuthentication(x => {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -49,12 +48,14 @@ namespace Myo
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
-                    ValidateAudience = false
+                    ValidateAudience = false,
+                    ValidateLifetime=false
                 };
             });
 
             services.Configure<AuthOptions>(Configuration.GetSection("Crypto"));
             services.AddScoped(typeof(IUserRepository), typeof (UserRepository));
+            services.AddScoped(typeof(IMyoRepository), typeof (MyoRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

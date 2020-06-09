@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cfO/UscUA4IgdRSNczaEb3XvaAHME8s4LCB/HyKfQR8lKaJZyfzYIANKlO4xHpFrwl1wpJVrQ3MVu0ISv1mRlw==",
+  "dgSpecHash": "q3q7C0FusMjR6qOjC5oFOMC7fJB4qRfwzgq+MvfOHvIOmj660uZ8h5airF35WapbEPxnu2AXeSeo4Wh+ticINA==",
   "success": true,
-  "projectFilePath": "/home/jnoma/workspace/dotnet/Myo/Myo.csproj",
+  "projectFilePath": "/home/jnoma/workspace/dotnet/Myo-API/Myo.csproj",
   "expectedPackageFiles": [
     "/home/jnoma/.nuget/packages/jwt/7.2.1/jwt.7.2.1.nupkg.sha512",
     "/home/jnoma/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/3.1.4/microsoft.aspnetcore.authentication.jwtbearer.3.1.4.nupkg.sha512",

@@ -5183,11 +5183,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/jnoma/workspace/dotnet/Myo/Myo.csproj",
+      "projectUniqueName": "/home/jnoma/workspace/dotnet/Myo-API/Myo.csproj",
       "projectName": "Myo",
-      "projectPath": "/home/jnoma/workspace/dotnet/Myo/Myo.csproj",
+      "projectPath": "/home/jnoma/workspace/dotnet/Myo-API/Myo.csproj",
       "packagesPath": "/home/jnoma/.nuget/packages/",
-      "outputPath": "/home/jnoma/workspace/dotnet/Myo/obj/",
+      "outputPath": "/home/jnoma/workspace/dotnet/Myo-API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/jnoma/.nuget/NuGet/NuGet.Config"

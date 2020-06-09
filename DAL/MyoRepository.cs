@@ -1,29 +1,20 @@
-
 using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using Myo.Models;
 
 namespace Myo.DAL
 {
-    public class UserRepository : IUserRepository, IDisposable
+    public class MyoRepository : IMyoRepository, IDisposable
     {
+
         private readonly MyoContext context;
-        public UserRepository(MyoContext context)
+        public MyoRepository(MyoContext context)
         {
             this.context = context;
         }
-        
-        public User GetUserByCredentials(string username, string password)
-        {
-            return context.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
-        }
 
-        public User GetUserById(int userId)
+        public void CreateMyo(Models.Myo myo)
         {
-            var user = context.Users.Where(u => u.IdUser == userId).FirstOrDefault();
-            context.Entry(user).State = EntityState.Detached;
-            return user;
+            context.Myos.Add(myo);
         }
 
         public void Save()
@@ -49,6 +40,5 @@ namespace Myo.DAL
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
     }
 }

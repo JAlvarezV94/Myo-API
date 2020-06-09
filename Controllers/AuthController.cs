@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Myo.ConfigurationModels;
+using Myo.Services;
 using Myo.DAL;
 using Myo.Helpers;
 using Myo.Models;
