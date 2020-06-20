@@ -35,6 +35,12 @@ namespace Myo.DAL
             return context.Myos.Where(m => m.OwnerIdUser == idUser).ToList();
         }
         
+        public void UpdateMyo(Models.Myo myo)
+        {
+            context.Update(myo);
+            context.SaveChanges();
+        }
+
         public void DeleteMyo(Models.Myo myoToDelete)
         {
             context.Myos.Remove(myoToDelete);

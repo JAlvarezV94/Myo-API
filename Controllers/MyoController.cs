@@ -86,6 +86,32 @@ namespace Myo.Controllers
         }
 
 
+        [HttpPut]
+        [Authorize]
+        [Route("[action]")]
+        public IActionResult UpdateMyo([FromBody] Models.Myo myo)
+        {
+            // Check Mandatory Fields
+            if (myo.IdMyo <= 0 || myo.OwnerIdUser <= 0 || string.IsNullOrEmpty(myo.Title) 
+            || string.IsNullOrEmpty(myo.Goal))
+                return Json(new SimpleResponser { Success = false, Message = "Id, Title and Goal are Mandatory Fields." });
+
+            if (DateTime.Compare(myo.EndDate, DateTime.Today) <= 0)
+                return Json(new SimpleResponser { Success = false, Message = "The goal date cannot be today or before. Things need time my friend." });
+
+            // Check Myo Exists
+            var myoToUpdate = myoRepository.GetMyoById(myo.IdMyo);
+            if(myoToUpdate == null)
+                return Json(new SimpleResponser { Success = false, Message = "Cannot find this Myo in the database." });
+
+            // Update Myo
+            myoToUpdate = myo;
+            myoRepository.UpdateMyo(myoToUpdate);
+            myoRepository.Save();
+
+            return Json(new SimpleResponser { Success = true, Message = "Myo updated correctly." });
+        }
+
         [HttpDelete]
         [Authorize]
         [Route("[action]/{id}")]
@@ -102,7 +128,7 @@ namespace Myo.Controllers
             // Delete the Myo
             myoRepository.DeleteMyo(myo);
             myoRepository.Save();
-            
+
             return Json(new SimpleResponser { Success = true, Message = "The Myo was delete." });
         }
     }

@@ -11,6 +11,8 @@ namespace Myo.DAL
 
         Myo.Models.Myo GetMyoById(int idMyo);
 
+        void UpdateMyo(Models.Myo myo);
+        
         void DeleteMyo(Models.Myo myoToDelete);
 
         void Save();
