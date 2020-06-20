@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
@@ -86,5 +85,25 @@ namespace Myo.Controllers
             return Json(new ComplexResponser<List<Myo.Models.Myo>> { Success = true, Message = "Myos obtained correctly.", Result = myoList});
         }
 
+
+        [HttpDelete]
+        [Authorize]
+        [Route("[action]/{id}")]
+        public IActionResult DeleteMyo(int id)
+        {
+            // Check the user has this Myo
+            if (id <= 0)
+                return Json(new SimpleResponser { Success = false, Message = "The Myo is not in the database." });
+
+            var myo = myoRepository.GetMyoById(id);
+            if(myo == null)
+                return Json(new SimpleResponser { Success = false, Message = "The Myo is not in the database." });
+
+            // Delete the Myo
+            myoRepository.DeleteMyo(myo);
+            myoRepository.Save();
+            
+            return Json(new SimpleResponser { Success = true, Message = "The Myo was delete." });
+        }
     }
 }

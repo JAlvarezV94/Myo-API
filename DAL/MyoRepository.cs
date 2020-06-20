@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Myo.Models;
 
 namespace Myo.DAL
@@ -19,11 +20,26 @@ namespace Myo.DAL
             context.Myos.Add(myo);
         }
 
+
+        public Models.Myo GetMyoById(int idMyo)
+        {
+            var myo = context.Myos.Where(m => m.IdMyo == idMyo).FirstOrDefault();
+            if(myo != null)
+                context.Entry(myo).State = EntityState.Detached;
+                
+            return myo;
+        }
+
         public List<Models.Myo> ListMyosByUser(int idUser)
         {
             return context.Myos.Where(m => m.OwnerIdUser == idUser).ToList();
         }
         
+        public void DeleteMyo(Models.Myo myoToDelete)
+        {
+            context.Myos.Remove(myoToDelete);
+        }
+
         public void Save()
         {
             context.SaveChanges();

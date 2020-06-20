@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Myo.Models
 {
@@ -11,5 +12,10 @@ namespace Myo.Models
         public DateTime Date { get; set; }
 
         public string TestDescription { get; set; }
+
+        public int IdMyo { get; set; }
+        
+        [ForeignKey("MyoIdMyo")]
+        public Myo Myo { get; set; }
     }
 }

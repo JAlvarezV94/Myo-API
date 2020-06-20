@@ -21,6 +21,11 @@ namespace Myo.Models{
             modelBuilder.Entity<Myo>()
             .HasOne(m => m.Owner)
             .WithMany(u => u.MyoList);
+
+            modelBuilder.Entity<Checkpoint>()
+            .HasOne(m => m.Myo)
+            .WithMany(c => c.CheckpointList)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Myo.Models;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -9,9 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Myo.Migrations
 {
     [DbContext(typeof(MyoContext))]
-    partial class MyoContextModelSnapshot : ModelSnapshot
+    [Migration("20200620112454_SettingRelationFKMyoAndCheckpoint")]
+    partial class SettingRelationFKMyoAndCheckpoint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,9 +30,6 @@ namespace Myo.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("IdMyo")
-                        .HasColumnType("integer");
 
                     b.Property<int?>("MyoIdMyo")
                         .HasColumnType("integer");
@@ -94,10 +93,9 @@ namespace Myo.Migrations
 
             modelBuilder.Entity("Myo.Models.Checkpoint", b =>
                 {
-                    b.HasOne("Myo.Models.Myo", "Myo")
+                    b.HasOne("Myo.Models.Myo", null)
                         .WithMany("CheckpointList")
-                        .HasForeignKey("MyoIdMyo")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("MyoIdMyo");
                 });
 
             modelBuilder.Entity("Myo.Models.Myo", b =>

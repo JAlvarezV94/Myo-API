@@ -9,6 +9,10 @@ namespace Myo.DAL
 
         List<Myo.Models.Myo> ListMyosByUser(int idUser);
 
+        Myo.Models.Myo GetMyoById(int idMyo);
+
+        void DeleteMyo(Models.Myo myoToDelete);
+
         void Save();
     }
 }
