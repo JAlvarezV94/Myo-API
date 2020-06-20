@@ -16,10 +16,13 @@ namespace Myo.Controllers
 
         private readonly IUserRepository userRepository;
         private readonly IMyoRepository myoRepository;
-        public MyoController(IUserRepository userRepository, IMyoRepository myoRepository)
+        private readonly ICheckpointRepository checkpointRepository;
+
+        public MyoController(IUserRepository userRepository, IMyoRepository myoRepository, ICheckpointRepository checkpointRepository)
         {
             this.userRepository = userRepository;
             this.myoRepository = myoRepository;
+            this.checkpointRepository = checkpointRepository;
         }
 
 
@@ -64,6 +67,27 @@ namespace Myo.Controllers
             return Json(new SimpleResponser { Success = true, Message = "Your Myo has been created correctly!"});
         }
 
+        [HttpGet]
+        [Authorize]
+        [Route("[action]")]
+        public IActionResult GetMyo([FromHeader] int idMyo)
+        {
+            // Check the id is a valid one
+            if (idMyo <= 0)
+                return Json(new SimpleResponser { Success = false, Message = "The Myo does not exists."});
+
+            // Get the Myo
+            var myo = myoRepository.GetMyoById(idMyo);
+
+            if(myo == null)
+                return Json(new SimpleResponser { Success = false, Message = "The Myo cannot be reached."});
+
+            // Get relationships
+            var checkPoints = checkpointRepository.ListCheckpointByMyo(myo.IdMyo);
+            myo.CheckpointList = checkPoints;
+
+            return Json(new ComplexResponser<Models.Myo> { Success = true, Message = "The Myo was obtained correctly.", Result = myo });
+        }
 
         [HttpGet]
         [Authorize]

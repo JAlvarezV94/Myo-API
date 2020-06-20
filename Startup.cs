@@ -56,6 +56,7 @@ namespace Myo
             services.Configure<AuthOptions>(Configuration.GetSection("Crypto"));
             services.AddScoped(typeof(IUserRepository), typeof (UserRepository));
             services.AddScoped(typeof(IMyoRepository), typeof (MyoRepository));
+            services.AddScoped(typeof(ICheckpointRepository), typeof(CheckpointRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

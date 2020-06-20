@@ -23,7 +23,9 @@ namespace Myo.DAL
 
         public Models.Myo GetMyoById(int idMyo)
         {
-            var myo = context.Myos.Where(m => m.IdMyo == idMyo).FirstOrDefault();
+            var myo = context.Myos.Where(m => m.IdMyo == idMyo)
+            .FirstOrDefault();
+            
             if(myo != null)
                 context.Entry(myo).State = EntityState.Detached;
                 
